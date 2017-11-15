@@ -14,5 +14,8 @@
     "omdb": "^0.8.0",
     "request": "^2.83.0",
     "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
   }
 }

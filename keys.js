@@ -1,10 +1,11 @@
-console.log('this is loaded');
+var Twitter = require("twitter");
+require("dotenv/config");
 
 var twitterKeys = {
-    consumer_key: '	oF62zPv5BTNaAu8CZMu5tE2ky',
-    consumer_secret: 'yrHeQjs1D9GYRIEEL4p9TXDvUmukzC4iyiKFDhFzvSWF79XTq2',
-    access_token_key: '	1669715828-q4ZQYqI3AWzMnwwFx3xD2E6P6lVrBUnJGo1oB9Q',
-    access_token_secret: 'alA9taVVmi0FjBaI1zko5M1yvWFq8qe5asb1ul4sggqFQ',
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token_key: process.env.ACCESS_TOKEN,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 }
 
 module.exports = twitterKeys;
