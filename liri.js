@@ -1,12 +1,14 @@
 var http = require("http");
-var twitter = require("./keys.js");
+var twitter = require("./twitter.js");
 
 
-http.get('search/tweets', { q: 'node.js' }, function(error, tweets, response) {
-    console.log(tweets);
-});
+var user_demand = process.argv[2].toLowerCase();
 
-
-
-
-console.log("The value of port is: " + process.env.SHELL);
+switch (user_demand) {
+    case "my-tweets":
+        console.log(twitter.get_tweets());
+        break;
+    default:
+        console.log("Not quite right");
+        break;
+}
