@@ -1,12 +1,19 @@
 var http = require("http");
 var twitter = require("./twitter.js");
 var spotify = require("./spotify.js");
-var fs = require("./fs.js")
+var fileStoreMethods = require("./fs.js");
+var fs = require("fs");
+var moment = require("moment");
 
+var now = moment().format("HH:mm");
+
+console.log(now);
 
 
 if (process.argv.length > 2) {
     var user_demand = process.argv[2].toLowerCase();
+    var fs = require('fs');
+    fs.appendFileSync('logs.txt', "The user entered this command: " + process.argv[2] + " " + " at " + now + "\n");
     switch (user_demand) {
         case "my-tweets":
             twitter.get_tweets();
@@ -15,8 +22,8 @@ if (process.argv.length > 2) {
             spotify.get_songs(process.argv[3].toLowerCase());
             break;
         case "do-what-it-says":
-            fs.readTheFile();
-            console.log(fs.parsedData);
+            fileStoreMethods.readTheFile();
+            console.log(fileStoreMethods.parsedData);
             break;
         default:
             console.log("Not quite right");
