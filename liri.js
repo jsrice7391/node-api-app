@@ -3,16 +3,16 @@ var twitter = require("./twitter.js");
 var spotify = require("./spotify.js");
 var fileStoreMethods = require("./fs.js");
 var fs = require("fs");
+var omdb = require("./omdb.js");
 var moment = require("moment");
+var now = moment().format("MMM DD YYYY HH:mm");
 
-var now = moment().format("HH:mm");
+// console.log(fileStoreMethods);
 
-console.log(now);
 
 
 if (process.argv.length > 2) {
     var user_demand = process.argv[2].toLowerCase();
-    var fs = require('fs');
     fs.appendFileSync('logs.txt', "The user entered this command: " + process.argv[2] + " " + " at " + now + "\n");
     switch (user_demand) {
         case "my-tweets":
@@ -22,8 +22,11 @@ if (process.argv.length > 2) {
             spotify.get_songs(process.argv[3].toLowerCase());
             break;
         case "do-what-it-says":
-            fileStoreMethods.readTheFile();
-            console.log(fileStoreMethods.parsedData);
+            // // fileStoreMethods.parsedData();
+            // // console.log(fileStoreMethods.parsedData);
+            // break;
+        case "movie-this":
+            omdb.get_movie(process.argv[3]);
             break;
         default:
             console.log("Not quite right");
