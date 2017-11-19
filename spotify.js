@@ -7,6 +7,8 @@ var client = new Spotify({
     secret: process.env.SPOT_SECRET_KEY, // Your secret
 });
 
+
+
 module.exports = {
 
     get_songs: function(theTrackName) {
