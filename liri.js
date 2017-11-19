@@ -6,32 +6,48 @@ var fs = require("fs");
 var omdb = require("./omdb.js");
 var moment = require("moment");
 var now = moment().format("MMM DD YYYY HH:mm");
-
-// console.log(fileStoreMethods);
-
-
+var user_demand;
+var arg;
 
 if (process.argv.length > 2) {
-    var user_demand = process.argv[2].toLowerCase();
+    get_output(process.argv[2].toLowerCase());
+} else {
+    console.log("I need more variables, please");
+}
+
+function get_output(user_demand) {
     fs.appendFileSync('logs.txt', "The user entered this command: " + process.argv[2] + " " + " at " + now + "\n");
     switch (user_demand) {
         case "my-tweets":
             twitter.get_tweets();
             break;
         case "spotify-this-song":
-            spotify.get_songs(process.argv[3].toLowerCase());
+            if (process.argv[3]) {
+                spotify.get_songs(process.argv[3].toLowerCase());
+            } else {
+                spotify.get_songs("The Sign");
+            }
             break;
         case "do-what-it-says":
-            var the_out = fileStoreMethods.get_data("random.txt");
-            console.log(the_out)
+            if (process.argv[3]) {
+                var the_out = fileStoreMethods.get_data(process.argv[3]);
+                process.argv[3] = the_out[1];
+                get_output(the_out[0]);
+            } else {
+                var the_out = fileStoreMethods.get_data("random.txt");
+                process.argv[3] = the_out[1];
+                get_output(the_out[0]);
+            }
             break;
         case "movie-this":
-            omdb.get_movie(process.argv[3]);
+            if (process.argv[3]) {
+                omdb.get_movie(process.argv[3]);
+            } else {
+                omdb.get_movie("Mr.Nobody");
+            }
             break;
         default:
             console.log("Not quite right");
             break;
     }
-} else {
-    console.log("I need more variables, please");
 }
