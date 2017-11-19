@@ -2,3 +2,13 @@
 The user entered this command: movie-this  at Nov 16 2017 22:48
 The user entered this command: movie-this  at Nov 16 2017 22:49
 The user entered this command: movie-this  at Nov 16 2017 22:49
+The user entered this command: my-tweets  at Nov 17 2017 14:31
+The user entered this command: movie-this  at Nov 17 2017 14:31
+The user entered this command: spotify-this-song  at Nov 17 2017 14:32
+The user entered this command: do-what-it-says  at Nov 17 2017 14:42
+The user entered this command: do-what-it-says  at Nov 17 2017 14:43
+The user entered this command: do-what-it-says  at Nov 17 2017 14:44
+The user entered this command: do-what-it-says  at Nov 18 2017 19:53
+The user entered this command: do-what-it-says  at Nov 18 2017 19:53
+The user entered this command: do-what-it-says  at Nov 18 2017 19:57
+The user entered this command: do-what-it-says  at Nov 18 2017 19:57

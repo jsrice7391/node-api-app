@@ -1,19 +1,20 @@
 var fs = require("fs");
+var content;
 
-var parsedData = function() {
-    fs.readFile('random.txt', function(err, data) {
-        if (err) {
-            return console.error(err);
-        }
-        var dataToParse = data.toString();
-        parsedData = dataToParse.split(",");
-    });
-    return parsedData
 
+
+
+var the_function = function(the_file) {
+    content = fs.readFileSync(the_file, "utf8").split(",");
+    return content;
 }
 
-// console.log(parsedData());
+
+// var theFinalContent = the_function("random.txt");
 
 
 
-exports.parseddata = parsedData;
+
+module.exports = {
+    get_data: the_function
+}

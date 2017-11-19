@@ -22,9 +22,9 @@ if (process.argv.length > 2) {
             spotify.get_songs(process.argv[3].toLowerCase());
             break;
         case "do-what-it-says":
-            // // fileStoreMethods.parsedData();
-            // // console.log(fileStoreMethods.parsedData);
-            // break;
+            var the_out = fileStoreMethods.get_data("random.txt");
+            console.log(the_out)
+            break;
         case "movie-this":
             omdb.get_movie(process.argv[3]);
             break;
