@@ -1,9 +1,0 @@
-
-The user entered this command: do-what-it-says  at Nov 18 2017 20:22
-The user entered this command: do-what-it-says  at Nov 18 2017 20:25
-The user entered this command: do-what-it-says  at Nov 18 2017 20:25
-The user entered this command: do-what-it-says  at Nov 18 2017 20:25
-The user entered this command: spotify-this-song  at Nov 18 2017 20:26
-The user entered this command: spotify-this-song  at Nov 18 2017 20:32
-The user entered this command: movie-this  at Nov 18 2017 20:33
-The user entered this command: movie-this  at Nov 18 2017 20:33
