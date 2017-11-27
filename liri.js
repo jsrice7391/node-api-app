@@ -23,9 +23,10 @@ function get_output(user_demand) {
             break;
         case "spotify-this-song":
             if (process.argv[3]) {
-                spotify.get_songs(process.argv[3].toLowerCase());
+                spotify.params.query = process.argv[3].toLowerCase();
+                spotify.get_songs(spotify.params);
             } else {
-                spotify.get_songs("The Sign");
+                spotify.get_songs(spotify.default);
             }
             break;
         case "do-what-it-says":
