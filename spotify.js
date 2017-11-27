@@ -9,6 +9,7 @@ var client = new Spotify({
 
 var params = {
     type: "track",
+    query: "",
     limit: 3,
 };
 

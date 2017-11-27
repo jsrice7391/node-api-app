@@ -3,29 +3,81 @@ var twitter = require("./twitter.js");
 var spotify = require("./spotify.js");
 var fileStoreMethods = require("./fs.js");
 var fs = require("fs");
+var inquirer = require("inquirer");
 var omdb = require("./omdb.js");
 var moment = require("moment");
 var now = moment().format("MMM DD YYYY HH:mm");
 var user_demand;
 var arg;
+var prompt = inquirer.createPromptModule();
 
-if (process.argv.length > 2) {
-    get_output(process.argv[2].toLowerCase());
-    fs.appendFileSync('logs.txt', "The user entered this command: " + process.argv[2] + " " + " at " + now + "\n");
-} else {
-    console.log("I need more variables, please");
-}
+var questions = [{
+    name: 'userCommand',
+    message: 'What can I help you with?',
+    type: "list",
+    choices: ['Show Me Tweets', 'Spotify This', "Movie search", 'Do What it says'],
+    filter: function(str) {
+        return str.split(' ').join('-').toLowerCase();
+    }
+}];
+
+prompt(questions).then(function(response) {
+    console.log("You chose: " + response.userCommand);
+    user_demand = response.userCommand;
+    switch (response.userCommand) {
+        case "show-me-tweets":
+            get_output("show-me-tweets");
+            break;
+        case "spotify-this":
+            inquirer.prompt([{
+                name: "userChoice",
+                message: "What song do you want to see?",
+                type: "input",
+            }]).then(function(response) {
+                spotify.params.query = response.userChoice;
+                spotify.get_songs(spotify.params);
+            });
+            break;
+        case "movie-search":
+            inquirer.prompt([{
+                name: "userChoice",
+                message: "What movie would you like to see?",
+                type: "input",
+            }]).then(function(response) {
+                omdb.get_movie(response.userChoice);
+            });
+            break;
+        case "do-what-it-says":
+            fileStoreMethods.get_output("random.txt");
+            break;
+        default:
+            console.log("Try again please")
+
+
+
+
+
+    }
+});
+
+
+
+
+
+
+
+
+
 
 
 
 function get_output(user_demand) {
     switch (user_demand) {
-        case "my-tweets":
+        case "show-me-tweets":
             twitter.get_tweets();
             break;
         case "spotify-this-song":
             if (process.argv[3]) {
-                spotify.params.query = process.argv[3].toLowerCase();
                 spotify.get_songs(spotify.params);
             } else {
                 spotify.get_songs(spotify.default);
