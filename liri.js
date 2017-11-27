@@ -11,12 +11,14 @@ var arg;
 
 if (process.argv.length > 2) {
     get_output(process.argv[2].toLowerCase());
+    fs.appendFileSync('logs.txt', "The user entered this command: " + process.argv[2] + " " + " at " + now + "\n");
 } else {
     console.log("I need more variables, please");
 }
 
+
+
 function get_output(user_demand) {
-    fs.appendFileSync('logs.txt', "The user entered this command: " + process.argv[2] + " " + " at " + now + "\n");
     switch (user_demand) {
         case "my-tweets":
             twitter.get_tweets();
