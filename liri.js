@@ -21,12 +21,21 @@ var questions = [{
     }
 }];
 
-prompt(questions).then(function(response) {
-    console.log("You chose: " + response.userCommand);
-    user_demand = response.userCommand;
-    switch (response.userCommand) {
+ask_questions();
+
+
+function ask_questions() {
+    prompt(questions).then(function(response) {
+        console.log("You chose: " + response.userCommand);
+        user_demand = response.userCommand;
+        getStuff(user_demand);
+    })
+};
+
+function getStuff(request) {
+    switch (request) {
         case "show-me-tweets":
-            get_output("show-me-tweets");
+            twitter.get_tweets();
             break;
         case "spotify-this":
             inquirer.prompt([{
@@ -48,61 +57,24 @@ prompt(questions).then(function(response) {
             });
             break;
         case "do-what-it-says":
-            fileStoreMethods.get_output("random.txt");
-            break;
-        default:
-            console.log("Try again please")
-
-
-
-
-
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-function get_output(user_demand) {
-    switch (user_demand) {
-        case "show-me-tweets":
-            twitter.get_tweets();
-            break;
-        case "spotify-this-song":
-            if (process.argv[3]) {
-                spotify.get_songs(spotify.params);
-            } else {
-                spotify.get_songs(spotify.default);
-            }
-            break;
-        case "do-what-it-says":
-            if (process.argv[3]) {
-                var the_out = fileStoreMethods.get_data(process.argv[3]);
-                process.argv[3] = the_out[1];
-                get_output(the_out[0]);
-            } else {
-                var the_out = fileStoreMethods.get_data("random.txt");
-                process.argv[3] = the_out[1];
-                get_output(the_out[0]);
-            }
-            break;
-        case "movie-this":
-            if (process.argv[3]) {
-                omdb.get_movie(process.argv[3]);
-            } else {
-                omdb.get_movie("Mr.Nobody");
+            var the_eval = fileStoreMethods.get_data("random.txt");
+            switch (the_eval[0]) {
+                case "spotify-this-song":
+                    spotify.params.query = the_eval[1];
+                    spotify.get_songs(spotify.params);
+                    break;
+                case "show-me-tweets":
+                    twitter.get_tweets();
+                    break;
+                case "movie-search":
+                    omdb.get_movie(the_eval[1]);
+                default:
+                    console.log("Non Executable Command");
+                    break;
             }
             break;
         default:
-            console.log("Not quite right");
-            break;
+            console.log("Try again please");
+
     }
-}
+};
