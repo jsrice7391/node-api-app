@@ -33,6 +33,10 @@ function ask_questions() {
 };
 
 function getStuff(request) {
+    fs.appendFile('logs.txt', "The user chose: " + request + " at: " + now + "\n", function(err) {
+        if (err) throw err;
+    });
+
     switch (request) {
         case "show-me-tweets":
             twitter.get_tweets();
