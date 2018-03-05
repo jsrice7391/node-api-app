@@ -11,8 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "fs": "0.0.1-security",
-    "inquirer": "^4.0.0",
-    "moment": "^2.19.2",
+    "inquirer": "^4.0.2",
+    "moment": "^2.21.0",
     "node-spotify-api": "^1.0.7",
     "omdb": "^0.8.0",
     "spotify-web-api-js": "^0.22.1",
