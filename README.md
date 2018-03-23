@@ -14,6 +14,7 @@ Using The App:
   <li>Clone the app</li>
   <li>Create a .env file</li>
   <li>Obtain API keys from the APIs above</li>
+  <li>In the projects directory enter <code>node liri.js</code></li>
   <li>Get Searching!</li>
 </ol>
 
